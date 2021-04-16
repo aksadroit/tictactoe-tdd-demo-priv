@@ -31,5 +31,11 @@ class TicTacToeTest {
 		String winningTeam = game.calculateResult('X');
 		assertEquals("PlayerX", winningTeam);
 	}
+	
+	@Test
+	void checkIfFirstRowOfTheBoardIsOccupied() {
+		char[][] input = {{'X', 'O', 'X'}, {' ', ' ', ' '}, {' ', ' ', ' '}};
+		assertTrue(game.checkIfRowOccupied(1, input));
+	}
 
 }

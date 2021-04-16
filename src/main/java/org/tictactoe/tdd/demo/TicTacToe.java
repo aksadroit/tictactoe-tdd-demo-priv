@@ -10,5 +10,14 @@ public class TicTacToe {
 		}
 		
 		return null;
+	}
+
+	public boolean checkIfRowOccupied(int rowNumber, char[][] gameInput) {
+		for (int i=0; i < 3; i++) {
+			if (gameInput[rowNumber-1][i] == ' ') {
+				return false;
+			}
+		}
+		return true;
 	} 
 }
