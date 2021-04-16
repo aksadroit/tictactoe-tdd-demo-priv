@@ -1,10 +1,26 @@
 package org.tictactoe.tdd.demo;
 
-import java.util.function.BooleanSupplier;
-
 public class TicTacToe {
+	
+	public String calculateResult(char[][] gameInput) {
+		char move = ' ';
+		for (int i=0; i < 3; i++) {
+			if (checkIfRowOccupied(i+1, gameInput)) {
+				move = gameInput[i][0];
+				for (int j=1; j < 3; j++) {
+					if (gameInput[i][j] != move) {
+						move = ' ';
+						break;
+					}
+				}
+				if (move != ' ')
+					break;
+			}
+		}
+		return getWinningTeam(move);
+	}
 
-	public String calculateResult(char move) {
+	public String getWinningTeam(char move) {
 		if (move == 'O') {
 			return "PlayerO";
 		} else if (move == 'X') {

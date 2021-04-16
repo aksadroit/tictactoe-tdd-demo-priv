@@ -16,19 +16,19 @@ class TicTacToeTest {
 	
 	@Test
 	void checkForNoResultIfNewGame() {
-		String winningTeam = game.calculateResult(' ');
+		String winningTeam = game.getWinningTeam(' ');
 		assertEquals(null, winningTeam);
 	}
 	
 	@Test
 	void checkIfPlayerOHasMadeAMove() {
-		String winningTeam = game.calculateResult('O');
+		String winningTeam = game.getWinningTeam('O');
 		assertEquals("PlayerO", winningTeam);
 	}
 	
 	@Test
 	void checkIfPlayerXHasMadeAMove() {
-		String winningTeam = game.calculateResult('X');
+		String winningTeam = game.getWinningTeam('X');
 		assertEquals("PlayerX", winningTeam);
 	}
 	
@@ -48,6 +48,12 @@ class TicTacToeTest {
 	void checkIfDiagnolOfTheBoardIsOccupied() {
 		char[][] input = {{'X', ' ', ' '}, {' ', 'O', ' '}, {' ', ' ', 'X'}};
 		assertTrue(game.checkIfDiagnolOccupied(input));
+	}
+	
+	@Test
+	void calculateWinnerIfARowOfTheBoardIsOccuppiedByPlayerX() {
+		char[][] input = {{'X', 'X', 'X'}, {'O', ' ', ' '}, {'O', ' ', ' '}};
+		assertEquals("PlayerX", game.calculateResult(input));
 	}
 
 }
