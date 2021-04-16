@@ -17,6 +17,17 @@ public class TicTacToe {
 					break;
 			}
 		}
+		
+		if (move == ' ' && checkIfColumnOccupied(1, gameInput)) {
+			move = gameInput[0][0];
+			for (int j=1; j < 3; j++) {
+				if (gameInput[j][0] != move) {
+					move = ' ';
+					break;
+				}
+			}
+		}
+		
 		return getWinningTeam(move);
 	}
 
