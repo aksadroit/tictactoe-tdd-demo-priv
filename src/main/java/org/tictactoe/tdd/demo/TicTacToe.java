@@ -3,9 +3,24 @@ package org.tictactoe.tdd.demo;
 public class TicTacToe {
 	
 	public String calculateResult(char[][] gameInput) {
-		char move = ' ';
 		String winningTeam = null;
 		
+		winningTeam = checkIfAnyRowOccupiedBySinglePlayer(gameInput);
+		
+		if (winningTeam == null) {
+			winningTeam = checkIfAnyColumnOccupiedBySinglePlayer(gameInput);
+		}
+		
+		if (winningTeam == null) {
+			winningTeam = checkIfAnyDiagonalOccupiedBySinglePlayer(gameInput);
+		}
+		
+		return winningTeam;
+	}
+	
+	private String checkIfAnyRowOccupiedBySinglePlayer(char[][] gameInput) {
+		char move;
+		String winningTeam = null;
 		for (int i=0; i < 3; i++) {
 			if (checkIfRowOccupied(i+1, gameInput)) {
 				move = gameInput[i][0];
@@ -21,40 +36,45 @@ public class TicTacToe {
 				}
 			}
 		}
-		
-		if (winningTeam == null) {
-			for (int i = 0; i < 3; i++) {
-				if (checkIfColumnOccupied(i+1, gameInput)) {
-					move = gameInput[0][i];
-					for (int j=1; j < 3; j++) {
-						if (gameInput[j][i] != move) {
-							move = ' ';
-							break;
-						}
+		return winningTeam;
+	}
+	
+	private String checkIfAnyColumnOccupiedBySinglePlayer(char[][] gameInput) {
+		char move;
+		String winningTeam = null;
+		for (int i = 0; i < 3; i++) {
+			if (checkIfColumnOccupied(i+1, gameInput)) {
+				move = gameInput[0][i];
+				for (int j=1; j < 3; j++) {
+					if (gameInput[j][i] != move) {
+						move = ' ';
+						break;
 					}
-					if (move != ' ') {
-						winningTeam = getWinningTeam(move);
+				}
+				if (move != ' ') {
+					winningTeam = getWinningTeam(move);
+					break;
+				}
+			}
+		}
+		return winningTeam;
+	}
+
+	private String checkIfAnyDiagonalOccupiedBySinglePlayer(char[][] gameInput) {
+		char move;
+		String winningTeam = null;
+		if (checkIfDiagnolOccupied(gameInput)) {
+			move = gameInput[0][0];
+			for (int i=0; i < 3; i++) {
+				for (int j=0; j < 3; j++) {
+					if (i==j && gameInput[i][j] != move) {
+						move = ' ';
 						break;
 					}
 				}
 			}
+			winningTeam = getWinningTeam(move);
 		}
-		
-		if (winningTeam == null) {
-			if (checkIfDiagnolOccupied(gameInput)) {
-				move = gameInput[0][0];
-				for (int i=0; i < 3; i++) {
-					for (int j=0; j < 3; j++) {
-						if (i==j && gameInput[i][j] != move) {
-							move = ' ';
-							break;
-						}
-					}
-				}
-				winningTeam = getWinningTeam(move);
-			}
-		}
-		
 		return winningTeam;
 	}
 
