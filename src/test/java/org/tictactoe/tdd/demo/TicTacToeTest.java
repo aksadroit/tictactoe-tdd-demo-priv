@@ -73,5 +73,10 @@ class TicTacToeTest {
 		char[][] input = {{'X', 'O', 'O'}, {' ', 'O', 'O'}, {'X', ' ', 'O'}};
 		assertEquals("PlayerO", game.calculateResult(input));
 	}
-
+	
+	@Test
+	void calculateWinnerIfDiagnalOfTheBoardIsOccuppiedByPlayerX() {
+		char[][] input = {{'X', 'O', 'O'}, {' ', 'X', 'X'}, {'O', ' ', 'X'}};
+		assertEquals("PlayerX", game.calculateResult(input));
+	}
 }
