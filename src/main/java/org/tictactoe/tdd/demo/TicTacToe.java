@@ -18,12 +18,18 @@ public class TicTacToe {
 			}
 		}
 		
-		if (move == ' ' && checkIfColumnOccupied(1, gameInput)) {
-			move = gameInput[0][0];
-			for (int j=1; j < 3; j++) {
-				if (gameInput[j][0] != move) {
-					move = ' ';
-					break;
+		if (move == ' ') {
+			for (int i = 0; i < 3; i++) {
+				if (checkIfColumnOccupied(i+1, gameInput)) {
+					move = gameInput[0][i];
+					for (int j=1; j < 3; j++) {
+						if (gameInput[j][i] != move) {
+							move = ' ';
+							break;
+						}
+					}
+					if (move != ' ')
+						break;
 				}
 			}
 		}
