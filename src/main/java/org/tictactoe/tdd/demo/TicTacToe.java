@@ -30,5 +30,16 @@ public class TicTacToe {
 			}
 		}
 		return true;
+	}
+
+	public boolean checkIfDiagnolOccupied(char[][] gameInput) {
+		for (int i=0; i < 3; i++) {
+			for (int j=0; j < 3; j++) {
+				if (i==j && gameInput[i][j] == ' ') {
+					return false;
+				}
+			}
+		}
+		return true;
 	} 
 }

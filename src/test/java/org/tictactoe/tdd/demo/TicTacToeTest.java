@@ -43,5 +43,11 @@ class TicTacToeTest {
 		char[][] input = {{'X', ' ', ' '}, {'O', ' ', ' '}, {'O', ' ', ' '}};
 		assertTrue(game.checkIfColumnOccupied(1, input));
 	}
+	
+	@Test
+	void checkIfDiagnolOfTheBoardIsOccupied() {
+		char[][] input = {{'X', ' ', ' '}, {' ', 'O', ' '}, {' ', ' ', 'X'}};
+		assertTrue(game.checkIfDiagnolOccupied(input));
+	}
 
 }
