@@ -19,5 +19,12 @@ class TicTacToeTest {
 		String winningTeam = game.calculateResult('O');
 		assertEquals("PlayerO", winningTeam);
 	}
+	
+	@Test
+	void checkIfPlayerXHasMadeAMove() {
+		TicTacToe game = new TicTacToe();
+		String winningTeam = game.calculateResult('X');
+		assertEquals("PlayerX", winningTeam);
+	}
 
 }
