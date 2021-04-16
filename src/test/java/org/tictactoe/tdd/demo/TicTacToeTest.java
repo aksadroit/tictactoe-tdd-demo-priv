@@ -9,8 +9,15 @@ class TicTacToeTest {
 	@Test
 	void checkForNoResultIfNewGame() {
 		TicTacToe game = new TicTacToe();
-		String winningTeam = game.calculateResult();
+		String winningTeam = game.calculateResult(' ');
 		assertEquals(null, winningTeam);
+	}
+	
+	@Test
+	void checkIfPlayerOHasMadeAMove() {
+		TicTacToe game = new TicTacToe();
+		String winningTeam = game.calculateResult('O');
+		assertEquals("PlayerO", winningTeam);
 	}
 
 }
