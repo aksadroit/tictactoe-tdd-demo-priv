@@ -79,4 +79,10 @@ class TicTacToeTest {
 		char[][] input = {{'X', 'O', 'O'}, {' ', 'X', 'X'}, {'O', ' ', 'X'}};
 		assertEquals("PlayerX", game.calculateResult(input));
 	}
+	
+	@Test
+	void checksIfMatchEndsInDraw() {
+		char[][] input = {{'X', 'O', 'O'}, {'O', 'X', 'X'}, {'O', 'X', 'O'}};
+		assertEquals(null, game.calculateResult(input));
+	}
 }
