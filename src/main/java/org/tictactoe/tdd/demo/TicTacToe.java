@@ -4,6 +4,8 @@ public class TicTacToe {
 	
 	public String calculateResult(char[][] gameInput) {
 		char move = ' ';
+		String winningTeam = null;
+		
 		for (int i=0; i < 3; i++) {
 			if (checkIfRowOccupied(i+1, gameInput)) {
 				move = gameInput[i][0];
@@ -13,12 +15,14 @@ public class TicTacToe {
 						break;
 					}
 				}
-				if (move != ' ')
+				if (move != ' ') {
+					winningTeam = getWinningTeam(move);
 					break;
+				}
 			}
 		}
 		
-		if (move == ' ') {
+		if (winningTeam == null) {
 			for (int i = 0; i < 3; i++) {
 				if (checkIfColumnOccupied(i+1, gameInput)) {
 					move = gameInput[0][i];
@@ -28,13 +32,15 @@ public class TicTacToe {
 							break;
 						}
 					}
-					if (move != ' ')
+					if (move != ' ') {
+						winningTeam = getWinningTeam(move);
 						break;
+					}
 				}
 			}
 		}
 		
-		return getWinningTeam(move);
+		return winningTeam;
 	}
 
 	public String getWinningTeam(char move) {
